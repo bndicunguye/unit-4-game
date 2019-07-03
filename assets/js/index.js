@@ -1,63 +1,60 @@
+// to declare variables to use
 var targetNumber 
 var wins =0;
 var loses =0;
 var counter
 
-
+// set up a reset function which run every time the game restart
 function reset(){
+    // set up counter for score point and tagetNumber for picking random number between19-120
 counter = 0;
 targetNumber=Math.floor(Math.random()*112)+19
+// set up jquery to display targetNumber,wins,loses,and score to the user
 $("#number-to-guess").text(targetNumber);
 $("#Wins").text(wins);
 $("#Loses").text(loses);
 $("#score").text(counter);
+// set up jquery empty methode to remove crystals
 $("#crystals").empty()
+// set up for loop to keep run code
 for (var i = 0; i < 4; i++) {
 
-    // For each iteration, we will create an imageCrystal
+    // set up variable imagecrystal to create a new image
     var imageCrystal = $("<img>");
-  
-    // First each crystal will be given the class ".crystal-image".
-    // This will allow the CSS to take effect.
+
+    // adding class to the crystal-image in order to use CSS
     imageCrystal.addClass("crystal-image");
   
-    // Each imageCrystal will be given a src link to the crystal image
+    // set up a src link to the crystal image
     imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
   
-    // Each imageCrystal will be given a data attribute called data-crystalValue.
-    // This data attribute will be set equal to the array value.
+    
+    // set up data attribute to the imagecrystal with value between 1-12
     imageCrystal.attr("data-crystalvalue", Math.floor(Math.random()*12)+1);
   
-    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
+    // adding crystal image to the page
     $("#crystals").append(imageCrystal);
   }
 }
 reset()
 
 
-
-// Now for the hard part. Creating multiple crystals each with their own unique number value.
-
-// We begin by expanding our array to include four options.
-
-
-// Next we create a for loop to create crystals for every numberOption.
-
-
-// This time, our click event applies to every single crystal on the page. Not just one.
+// set up .on click function to execute each time you click to the crystal image.
 $(document).on("click",".crystal-image", function() {
 
-  // Determining the crystal's value requires us to extract the value from the data attribute.
-  // Using the $(this) keyword specifies that we should be extracting the crystal value of the clicked crystal.
-  // Using the .attr("data-crystalvalue") allows us to grab the value out of the "data-crystalvalue" attribute.
-  // Since attributes on HTML elements are strings, we must convert it to an integer before adding to the counter
 
+// set up $this. keyword to refer the crystal value of the clicked crystal and .attr("data-crystalvalue")will get the value from data-crystalvalue
   var crystalValue = ($(this).attr("data-crystalvalue"));
+// set up parseInt to convert strings into numbers to add to to the counter
   crystalValue = parseInt(crystalValue);
-  // We then add the crystalValue to the user's "counter" which is a global variable.
-  // Every click, from every crystal adds to the global counter.
+
+//   set up the counter to the user so that every time they click on every crystal, counter get added and scrore displayed.
+
   counter += crystalValue;
 $("#score").text(counter)
+
+// set up conditions to determine win,loss and rest the game once win orr loss happened
+
   if (counter === targetNumber) {
     wins++
     reset()

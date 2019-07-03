@@ -1,7 +1,52 @@
 .crystal-image {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
+    padding: 20px;
+    margin-block-end: 10px
   }
 body{
-    background-color: green;
+    background-color: rgb(45, 107, 45);
+   
+}
+
+#number-to-guess{
+    background-color: rgb(79, 42, 165);
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+}
+
+h1{
+    background-color: brown;
+    margin-bottom: 5px;
+
+   
+    
+}
+
+#Loses{
+    background-color: rgb(79, 42, 165);
+    width: 5px;
+    height: 5px;
+    padding: 5px;
+    
+
+
+}
+#Wins{
+    background-color: rgb(79, 42, 165);
+    width: 5px;
+    height: 5px;
+    padding: 5px;
+}
+#score{
+    background-color: rgb(79, 42, 165);
+    width: 5px;
+    height: 5px;
+    padding: 5px;
+}
+h2{
+    background-color: brown;
+    
+
 }
